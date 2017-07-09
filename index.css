@@ -1,0 +1,37 @@
+.buttons_box{
+display: flex;
+margin: 0 auto;
+align-items:center;
+justify-content: space-between;
+max-width: 600px;
+border-style: solid;
+border-radius: 15px;
+
+}
+
+.display_box{
+}
+
+#play_button i{
+
+  display: inline;
+  font-size: 80px;
+
+}
+#pause_button i{
+  display:inline;
+  font-size: 80px;
+  }
+
+#skip_button i{
+  display:inline;
+  font-size: 80px;
+}
+#previous_button i{
+  display:inline;
+  font-size: 80px;
+}
+#stop_button i{
+  display:inline;
+  font-size: 80px;
+}
