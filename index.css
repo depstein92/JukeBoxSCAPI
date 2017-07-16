@@ -1,37 +1,49 @@
 .buttons_box{
-display: flex;
+position: relative;
 margin: 0 auto;
-align-items:center;
-justify-content: space-between;
 max-width: 600px;
 border-style: solid;
 border-radius: 15px;
-
+height: 500px;
 }
 
 .display_box{
 }
 
 #play_button i{
-
-  display: inline;
-  font-size: 80px;
+  position: relative;
+ border-radius: 25px;
+ font-size: 100px;
+ width: 100px;
+ height: 100px;
 
 }
 #pause_button i{
-  display:inline;
-  font-size: 80px;
+  position: relative;
+  border-radius: 25px;
+  font-size: 100px;
+  width: 100px;
+  height: 100px;
   }
 
 #skip_button i{
-  display:inline;
-  font-size: 80px;
+  position: relative;
+  border-radius: 25px;
+  font-size: 100px;
+  width: 100px;
+  height: 100px;
 }
 #previous_button i{
-  display:inline;
-  font-size: 80px;
+  position: relative;
+  border-radius: 25px;
+  font-size: 100px;
+  width: 100px;
+  height: 100px;
 }
 #stop_button i{
-  display:inline;
-  font-size: 80px;
+  position: relative;
+  border-radius: 25px;
+  font-size: 100px;
+  width: 100px;
+  height: 100px
 }
