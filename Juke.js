@@ -1,4 +1,3 @@
-
 alert('successfull load on runtime');
 /*===============Elements=======================
 ================================================*/
@@ -11,45 +10,74 @@ var audio = document.getElementById('audioPlayer');
 var play_image = document.getElementById('play_image');
 
 var requestAnimationFrame =
-   window.requestAnimationFrame ||
-   window.mozrequestAnimationFrame ||
-   window.webkitrequestAnimationFrame ||
-   window.msrequestAnimationFrame;
+  window.requestAnimationFrame ||
+  window.mozrequestAnimationFrame ||
+  window.webkitrequestAnimationFrame ||
+  window.msrequestAnimationFrame;
 
 /*====================================================
 ================Song Storage======================*/
 
-function songStorage(songs){
+function songStorage(songs) {
   this.songs = [];
-  this.addSong = function(song){
-    this.songs.push("http://www.californiaherps.com/sounds/rcatesbeianaic509encounter.mp3");
+  this.addSong = function(song) {
+    this.songs.push(song);
     console.log('I have been called', this.songs);
   }
 }
 
-songStorage.prototype.addSong = function(song){
-  this.songs.push("http://www.californiaherps.com/sounds/rcatesbeianaic509encounter.mp3");
-  console.log('I have been called', this.songs);
-}
-
 var store = new songStorage();
-//console.log(this.store.songs, " i am on line 32");
 
-//audio.src = "http://www.californiaherps.com/sounds/rcatesbeianaic509encounter.mp3";
 
 store.addSong("http://www.californiaherps.com/sounds/rcatesbeianaic509encounter.mp3");
+store.addSong("http://www.californiaherps.com/sounds/rcatesbeianaic509encounter.mp3");
+store.addSong("http://confrerie.cz.free.fr/cstrike/sound/eira-smallgust.wav");
+store.addSong("");
 audio.src = store.songs[0];
 /*===============================================
 ================Jukebox Object=====================*/
 
-function JukeBox(){
-this.play = function(){console.log(audio.play()); }
-this.pause = function(){ alert('I have been called: Pause'); /*this.song.then(function(player) {player.pause();})*/}
-this.stop = function(){alert('I have been called: Stop'); /*this.song.then(function(player){player.stop();})*/}
-this.rewind = function(){}
-this.forward = function(){}
+function JukeBox() {
+  this.play = function() {
+    audio.play();
+  }
+  this.pause = function() {
+    audio.pause();
+  }
+  this.stop = function() {
+    i = 0;
+    audio.pause()
+    audio.src = store.songs[i]
+  }
+  this.rewind = function() {
 
+  let i = i--;
+  store.songs[i];
+    if (i >= 0) {
+      audio.pause()
+      audio.src = store.songs[i]
+      audio.play()
+    } else {
+      i = store.songs.length - 1;
+      audio.pause()
+      audio.src = store.songs[i]
+      audio.play(store.songs[i])
+
+    }};
+  this.forward = function() {
+      let i = i++;
+      store.songs[i];
+    if(i < store.songs.length){
+      audio.pause();
+      audio.src = store.songs[i];
+      audio.play();
+    }else {
+      i = 0;
+      audio.pause()
+      audio.src = store.songs[i];
+      audio.play()
 }
+}};
 /*=================================================
 ==================================================
 ================New Instances of Object====================*/
@@ -68,33 +96,36 @@ var juke = new JukeBox();
 =====================================================
 =============Event Listeners==========================*/
 
-playButton.addEventListener('click', function(event){
-//alert('I have been clicked: playButton');
-juke.play()
-function slideLeft() {
-   var b = setTimeout(function() { /*fixing request Animation Frame */
-     requestAnimationFrame(slideLeft);
+playButton.addEventListener('click', function(event) {
+event.preventDefault();
 
-     currentPosition += 5;
-     playButton.style.right = currentPosition + "px";
-     if (Math.abs(currentPosition) >= 900) {
-       currentPosition = -500;
-     }
-   }, 10);
-   clearTimeout(slideLeft);
- }
+  juke.play()
 
- slideLeft();
+  function slideLeft() {
+    var b = setTimeout(function() { /*fixing request Animation Frame */
+      requestAnimationFrame(slideLeft);
+
+      currentPosition += 5;
+      playButton.style.right = currentPosition + "px";
+      if (Math.abs(currentPosition) >= 900) {
+        currentPosition = -500;
+      }
+    }, 10);
+    clearTimeout(slideLeft);
+  }
+
+  slideLeft();
 });
 
-pauseButton.addEventListener('click', function(event){
-  //alert('I have been clicked: pauseButton');
-  alert(juke.pause()); //.bind(this);
+pauseButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  juke.pause();
 
 });
 
-stop_button.addEventListener('click', function(event){
-  alert(juke.stop());
+stop_button.addEventListener('click', function(event) {
+  event.preventDefault();
+  juke.stop()
   //alert('I have been clicked: stopButton');
 });
 
