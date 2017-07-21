@@ -1,21 +1,54 @@
-.buttons_box{
-position: relative;
-margin: 0 auto;
-max-width: 600px;
-border-style: solid;
-border-radius: 15px;
-height: 500px;
+
+body{
+  background-image: url('https://www.creativefan.com/important/cf/2013/01/awesome-desktop-backgrounds/nice-wallpaper-for-desktop.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
+
 
 .display_box{
+height: 600px;
+width: 600px;
+margin: 0 auto;
+border-radius: 25px;
+border-style: solid;
+border-color: bl;
+
 }
 
+.display_box #artwork{
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border-radius: 25px;
+  border-style: solid;
+  margin: 0 auto;
+  top: 100px;
+}
+.display_box #inform{
+  position: relative;
+  width: inherit;
+  height: 70px;
+  margin: 0 auto;
+  border-style: solid;
+  border-radius: 25px;
+  top: 130px;
+}
+
+#play_button{
+  position: relative;
+
+}
 #play_button i{
   position: relative;
  border-radius: 25px;
  font-size: 100px;
  width: 100px;
  height: 100px;
+ top: -341px;
+ left: 611px;
+
 
 }
 #pause_button i{
@@ -24,6 +57,11 @@ height: 500px;
   font-size: 100px;
   width: 100px;
   height: 100px;
+  top: -341px;
+  left: 611px;
+
+
+
   }
 
 #skip_button i{
@@ -32,6 +70,10 @@ height: 500px;
   font-size: 100px;
   width: 100px;
   height: 100px;
+  top: -344px;
+  left: 609px;
+
+
 }
 #previous_button i{
   position: relative;
@@ -39,11 +81,17 @@ height: 500px;
   font-size: 100px;
   width: 100px;
   height: 100px;
+  top: -349px;
+  left: 608px;
 }
 #stop_button i{
   position: relative;
   border-radius: 25px;
   font-size: 100px;
   width: 100px;
-  height: 100px
+  height: 100px;
+  top: -342px;
+  left: 612px;
+
+
 }
