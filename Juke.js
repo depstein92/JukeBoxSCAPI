@@ -52,84 +52,45 @@ function JukeBox() {
   this.currentSongId = 0;
   this.songsPos = store.songs[this.currentPosition];
   this.song = SC.stream('/tracks/' + store.songs[0]);
+  this.playerFlag = false;
   this.play = function() {
-      //this.currentSongId = this.songsPos.id;
-      this.song = SC.stream('/tracks/' + store.songs[this.currentSongIndex]);
-      this.song.then(function(player) {
-        console.log(player);
-        this.player = player;
-        player.play();
-
-      }.bind(this))
-  };
-  this.pause = function() {
-    this.player.pause();
-    console.log(this);
-    this.song.then(function(player){
-      console.log(player);
-    })
-  }
-  /*this.stop = function() {
+    console.log(store.songs[this.currentSongIndex]);
+    SC.get('/tracks/' + store.songs[this.currentSongIndex]).then(function(tracks) {
+      artwork.innerHTML = tracks.artwork_url;
+      songInfo.innerHTML = tracks.title;
+    });
+    this.playerFlag = true;
+    this.song = SC.stream('/tracks/' + store.songs[this.currentSongIndex]);
     this.song.then(function(player) {
-      store.songs[index].currentTime = 0;
-      alert('I have been called');
-      player.pause();
+      this.player = player;
+      player.play();
+    }.bind(this))
+  };
+  this.pause = function() { //you need to figure out how to pause a song
+    //after its been paused once before
+    this.player.pause();
+  }
 
-    })
-
-  }*/
   this.rewind = function() { /*WARNING: MIGHT BE BUGGY, Investigate later*/
-    if (currentPosition < 0) {
-      this.song.then(function(player) {
-        player.play();
-        audio.src = store.songs[0];
-        audio.play();
-      })
-
-
+    if (this.currentSongIndex < 0) {
+      this.currentSongIndex = 0;
     } else {
-      currentPosition = store.songs.length - 1;
-      audio.pause();
-      audio.src = store.songs[currentPosition]
-      audio.play();
-
+      this.currentSongIndex--;
     }
+    this.play();
   };
   this.currentSongIndex = 0;
 
-  this.forward = function() { //==========================START OF FORWARD BUTTON ====================
-    // this.song.then(function(player) {
-    //   player.pause();
-    //   console.log('paused has been hit');
-    // });
+  this.forward = function() {
+    if (this.currentSongIndex >= store.songs.length) {
+      this.currentSongIndex = 0;
+    } else {
+      this.currentSongIndex++;
+    }
+    this.play();
 
-   if (this.currentSongIndex >= store.songs.length) {
-        this.currentSongIndex = 0;
-        console.log('this has exceeded everything');
-      } else{
-        console.log(this.currentSongIndex);
-        this.currentSongIndex++;
-      }
-     this.play();
-    //  audio.src = store.songs[this.currentSongIndex];
 
-    /*  this.song.then(function(player){
-        player.play();
-      })
-    /*
-    console.log('I am at point 3');
-    console.log(this.currentSongIndex);
-    console.log(this.store.songs);
-    let stored = this.store.songs[currentSongIndex];
-    console.log(stored);
-    this.song.then(function(player) {
-      player.play();
-    });
-    this.song.then(function(player) {
-      player.play();
-    }); */
-
-  } //========================================================END OF FORWARD BUTTON
+  }
 }
 
 
@@ -177,11 +138,6 @@ pauseButton.addEventListener('click', function(event) {
 
 });
 
-/*stop_button.addEventListener('click', function(event) {
-  event.preventDefault();
-  juke.stop()
-  //alert('I have been clicked: stopButton');
-});*/
 rewindButton.addEventListener('click', function(event) {
   event.preventDefault();
   juke.rewind();

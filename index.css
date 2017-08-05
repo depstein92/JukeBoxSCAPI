@@ -5,7 +5,13 @@ body{
   background-size: cover;
 }
 
+#inform{
+  font-family: 'Teko', sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 50px; 
 
+}
 
 .display_box{
 height: 600px;
