@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="index.css">
-  <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
   <script type="text/javascript" src="Juke.js" defer></script>
   <title> Buddha Jukebox</title>
 </head>
@@ -11,12 +11,6 @@
   <audio id="audioPlayer">
   </audio>
   <!--------Display Box------->
-  <div id="searchBox">
-  <form>
-    <h1>Search</h1>
-    <input type="text" name="Search" />
-  </form>
-  </div>
   <div class="display_box">
     <div id="artwork"></div>
     <div id="inform"></title>
@@ -28,6 +22,12 @@
     <div id="skip_button"><i class="fa fa-hand-o-right" aria-hidden="true"></i></div>
     <div id="previous_button"><i class="fa fa-hand-o-left" aria-hidden="true"></i></div>
   <!--------  </div> --->
+</div>
+<div id="searchBox">
+<form  method="get">
+ UpLoad: <input type="text" name="searchTxt" placeholder="type song name here"><br>
+ <input type="submit" name="formClick" value="Submit">
+</form>
 </div>
 <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
 <script src="https://use.fontawesome.com/144ed3a5c7.js"></script>

@@ -1,7 +1,10 @@
 alert('successfull load on runtime');
+
 /*===============Elements=======================
 ================================================*/
-
+var input = document.querySelector('[name="searchTxt"]').value;
+var inputButton = document.querySelector('[name="formClick"]');
+alert( typeof input);
 var artwork = document.getElementById('artwork');
 var songInfo = document.getElementById('inform');
 var buttonsBox = document.getElementById('buttons_box');
@@ -91,6 +94,9 @@ function JukeBox() {
 
 
   }
+  this.upload = () => {
+
+  }
 }
 
 
@@ -107,10 +113,38 @@ SC.initialize({
 var juke = new JukeBox();
 
 
+function upLoad(songName){
+  SC.get('/tracks', {
+  		q: songName,
+  	}).then(function(tracks) {
+  		playlist = tracks;
+      artwork.innerHTML = tracks.artwork_url;
+      songInfo.innerHTML = tracks.title;
+      this.song.then(function(player) {
+        this.player = player;
+        player.play();
+      });
+  });
+
+
+}
+
+// let upLoName = SC.stream('/tracks/' + songName + '.mp3');
+// console.log('this is the object loaded: ' + upLoName);
+// console.log(newObj);
+// debugger;
+// artwork.innerHTML = songName.artwork_url;
+// songInfo.innerHTML = songName.title;
+// let newOBj = this.songs.splice(0,0,upLoName);
+
+
+
 
 /*===================================================
 =====================================================
 =============Event Listeners==========================*/
+
+
 
 playButton.addEventListener('click', function(event) {
   event.preventDefault();
@@ -132,21 +166,28 @@ playButton.addEventListener('click', function(event) {
   slideLeft(); */
 });
 
-pauseButton.addEventListener('click', function(event) {
+pauseButton.addEventListener('click',(event) => {
   event.preventDefault();
   juke.pause();
 
 });
 
-rewindButton.addEventListener('click', function(event) {
+rewindButton.addEventListener('click', (event) => {
   event.preventDefault();
   juke.rewind();
 });
-forwardButton.addEventListener('click', function(event) {
+forwardButton.addEventListener('click', (event) => {
   event.preventDefault();
   juke.forward();
 });
-
+// input.addEventListener('keyup', (event) => {
+// event.preventDefault();
+// });
+inputButton.addEventListener('submit',(event) => {
+  event.preventDefault();
+  alert('I have been triggered');
+  upLoad(input);
+});
 
 
 /*========================================================
