@@ -9,7 +9,7 @@ body{
   font-family: 'Teko', sans-serif;
   color: white;
   text-align: center;
-  font-size: 50px; 
+  font-size: 50px;
 
 }
 
@@ -100,4 +100,9 @@ border-color: bl;
   left: 612px;
 
 
+}
+#artwork image{
+  width: 250px;
+  height: 250px;
+  border-color: red;
 }

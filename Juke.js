@@ -4,7 +4,7 @@ alert('successfull load on runtime');
 ================================================*/
 var input = document.querySelector('[name="searchTxt"]').value;
 var inputButton = document.querySelector('[name="formClick"]');
-alert( typeof input);
+alert(typeof input);
 var artwork = document.getElementById('artwork');
 var songInfo = document.getElementById('inform');
 var buttonsBox = document.getElementById('buttons_box');
@@ -59,7 +59,7 @@ function JukeBox() {
   this.play = function() {
     console.log(store.songs[this.currentSongIndex]);
     SC.get('/tracks/' + store.songs[this.currentSongIndex]).then(function(tracks) {
-      artwork.innerHTML = '<img src="'+tracks.artwork_url+'"/>';
+      artwork.innerHTML = '<img src="' + tracks.artwork_url + '"/>';
       songInfo.innerHTML = tracks.title;
     });
     this.playerFlag = true;
@@ -113,29 +113,8 @@ SC.initialize({
 var juke = new JukeBox();
 
 
-function upLoad(songName){
-  SC.get('/tracks', {
-  		q: songName,
-  	}).then(function(tracks) {
-  		playlist = tracks;
-      artwork.innerHTML = tracks.artwork_url;
-      songInfo.innerHTML = tracks.title;
-      this.song.then(function(player) {
-        this.player = player;
-        player.play();
-      });
-  });
 
 
-}
-
-// let upLoName = SC.stream('/tracks/' + songName + '.mp3');
-// console.log('this is the object loaded: ' + upLoName);
-// console.log(newObj);
-// debugger;
-// artwork.innerHTML = songName.artwork_url;
-// songInfo.innerHTML = songName.title;
-// let newOBj = this.songs.splice(0,0,upLoName);
 
 
 
@@ -166,7 +145,7 @@ playButton.addEventListener('click', function(event) {
   slideLeft(); */
 });
 
-pauseButton.addEventListener('click',(event) => {
+pauseButton.addEventListener('click', (event) => {
   event.preventDefault();
   juke.pause();
 
@@ -183,7 +162,7 @@ forwardButton.addEventListener('click', (event) => {
 // input.addEventListener('keyup', (event) => {
 // event.preventDefault();
 // });
-inputButton.addEventListener('submit',(event) => {
+inputButton.addEventListener('submit', (event) => {
   event.preventDefault();
   alert('I have been triggered');
   upLoad(input);
