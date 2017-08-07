@@ -59,7 +59,7 @@ function JukeBox() {
   this.play = function() {
     console.log(store.songs[this.currentSongIndex]);
     SC.get('/tracks/' + store.songs[this.currentSongIndex]).then(function(tracks) {
-      artwork.innerHTML = tracks.artwork_url;
+      artwork.innerHTML = '<img src="'+tracks.artwork_url+'"/>';
       songInfo.innerHTML = tracks.title;
     });
     this.playerFlag = true;
